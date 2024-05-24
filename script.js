@@ -68,11 +68,11 @@ document.getElementById('enterButton').addEventListener('click', function() {
     });
 
 
-    displayImage('file:///Users/talhakhan/Desktop/talhakhantri.github.io/1.png')
-    displayImage('file:///Users/talhakhan/Desktop/talhakhantri.github.io/2.png')
-    displayImage('file:///Users/talhakhan/Desktop/talhakhantri.github.io/3.png')
-    displayImage('file:///Users/talhakhan/Desktop/talhakhantri.github.io/4.png')
-    displayImage('file:///Users/talhakhan/Desktop/talhakhantri.github.io/5.png')
+    displayImage('https://talhakhantri.github.io/1.png')
+    displayImage('https://talhakhantri.github.io/2.png')
+    displayImage('https://talhakhantri.github.io/3.png')
+    displayImage('https://talhakhantri.github.io/4.png')
+    displayImage('https://talhakhantri.github.io/5.png')
 
 });
 
