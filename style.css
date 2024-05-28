@@ -15,6 +15,10 @@ body {
 }
 
 
+li {
+    margin-bottom: 10px; /* Adds space below each list item */
+}
+
 p {
     display: block;
     margin-bottom: 5px;
@@ -124,3 +128,27 @@ button:hover {
 .loading {
     animation: fadeInOut 2s infinite;
 }
+
+
+
+#instructions {
+    margin-left: 5%;
+    margin-right: 15%;
+    margin-bottom: 2%;
+    margin-top: 1%;
+    text-align: justify;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

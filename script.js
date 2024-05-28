@@ -13,8 +13,6 @@ document.getElementById('enterButton').addEventListener('click', function() {
     let serverURLImage = '';
     let currentPlaceholderIndex = 1;
 
-    const enterButton = document.getElementById('enterButton');
-
     function displayImage(url) {
         const resultContainer = document.getElementById('resultContainer');
         const img = document.createElement('img');
@@ -31,7 +29,6 @@ document.getElementById('enterButton').addEventListener('click', function() {
     }
 
 
-    // Drag and drop functions
     function dragStart(event) {
         event.dataTransfer.setData('text/plain', event.target.src);
         event.dataTransfer.setData('source-id', event.target.parentElement.id);
@@ -79,7 +76,7 @@ document.getElementById('enterButton').addEventListener('click', function() {
 
 
 
-document.getElementById('continueButton').addEventListener('click', function() {
+document.getElementById('SubmitRanksButton').addEventListener('click', function() {
     let countImages = 0;
     let imageMap = new Map();
     function checkImagesInPlaceholders() {
@@ -94,7 +91,13 @@ document.getElementById('continueButton').addEventListener('click', function() {
             placeholders.forEach((placeholder, index) => {
                 imageMap.set(placeholder.id, placeholder.querySelector('img').src)
             });
-            send(Object.fromEntries(imageMap));
+            if (submitted == false) {
+                console.log('here');
+                imageMap.set("description", document.getElementById("textInput").value);
+                send(Object.fromEntries(imageMap));
+                document.getElementById('SubmitRanksButton').style.display = 'none';
+                document.getElementById('enterButton').style.display = 'none';
+            }
         } else {
             alert('Please rank all the images.');
         }
@@ -116,6 +119,7 @@ let d;
 let eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
 let eventer = window[eventMethod];
 let messageEvent = eventMethod === "attachEvent" ? "onmessage" : "message";
+let submitted = false;
 
 
 
