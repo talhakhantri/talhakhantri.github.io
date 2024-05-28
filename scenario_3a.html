@@ -8,21 +8,25 @@
 </head>
 <body>
     <div class="container">
-        <p id="scenario">Bring your ideas to life: 
+        <p id="scenario">Scenario 3A: 
             <div id="instructions">
-                This tool lets you turn your ideas into pictures. Here's how to use it:
-                <ol>
-                  <li>Type a description of the picture you're thinking of in the box below.</li>
-                  <li>Click <strong>"Generate Images"</strong>.</li>
-                  <li>Wait about 20 seconds for the pictures to show up. You should see five pictures.</li>
-                  <li>Drag each picture in the slots below to rank it. The one that matches your idea the best should go in the first slot on the left, under <strong>"Best"</strong>.</li>
-                  <li>When you're done assigning ranks, click <strong>"Submit Ranks"</strong>.</li>
-                </ol>
-                You can change your description and make new generate images as many times as you want. But remember, you can only submit your rankings once.
+                Lily, a 16-year-old high school student, is feeling overwhelmed by the upcoming finals and decides to seek help. 
+                After class, she approaches her math teacher, Mr. Thompson, hoping for guidance and support. 
+                She explains her anxiety about her performance and her struggles with the material. 
+                <em><strong>However, Mr. Thompson is unable to fully grasp the extent of Lily's concerns.</em></strong>
             </div >
         </p>
+        <p id="task">Task: 
+            <div id="instructions">
+                Now, picture Mr. Thompson is using a mixed reality headset and he is able to see visualizations as Lily explains what she is going through.
+                <em><strong>What visualization do you think can be displayed to help Mr. Thompson undertsand Lily's situation.</em></strong>
+                Enter the description of the visualization in the box below.
+                Remember, your imagination is the only limit. You can think of any kind of visualization, whether specific or abstract.
+            </div>
+        </p>
+
         <div class="formfield">
-            <textarea id="textInput">Skeleton playing purple guitar in desert while wearing a sombrero</textarea>
+            <textarea id="textInput" placeholder="Enter the description of your visualization here..."></textarea>
         </div>
         <button id="enterButton"><strong>Generate Images</strong></button>
         <div id="resultContainer">
@@ -34,11 +38,11 @@
         </div>
         <hr>
         <div id="textContainer">
-            <div class="invisibleplaceholder"><p style="font-size: 25px; margin: 0px; text-align: center;">Best Rank</p></div>
+            <div class="invisibleplaceholder"><p style="font-size: 25px; margin: 0px;">Best Rank</p></div>
             <div class="invisibleplaceholder"></div>
             <div class="invisibleplaceholder"></div>
             <div class="invisibleplaceholder"></div>
-            <div class="invisibleplaceholder"><p style="font-size: 25px; margin: 0px; text-align: center;">Worst Rank</p></div>
+            <div class="invisibleplaceholder"><p style="font-size: 25px; margin: 0px;">Worst Rank</p></div>
         </div>
         <div id="rankContainer">
             <div class="placeholder" id="rank_1"></div>
