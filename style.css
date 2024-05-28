@@ -3,10 +3,17 @@ body {
 }
 
 .container {
-    width: 80%;
+    width: 90%;
     margin: auto;
     padding-top: 20px;
 }
+
+
+.formfield {
+  display: flex;
+  justify-content: center;
+}
+
 
 p {
     display: block;
@@ -17,7 +24,7 @@ p {
 }
 
 textarea {
-    width: 100%;
+    width:50%;
     height: 150px;
     margin-bottom: 10px;
 }
