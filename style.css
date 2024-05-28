@@ -9,12 +9,6 @@ body {
 }
 
 
-.formfield {
-  display: flex;
-  justify-content: center;
-}
-
-
 p {
     display: block;
     margin-bottom: 5px;
