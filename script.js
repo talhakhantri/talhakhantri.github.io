@@ -8,7 +8,6 @@ let submitted = false;
 
 
 eventer(messageEvent, function (e) {
-    console.log("Message received", e.data);
     key = e.data;
 });
 
