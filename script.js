@@ -92,7 +92,6 @@ document.getElementById('SubmitRanksButton').addEventListener('click', function(
                 imageMap.set(placeholder.id, placeholder.querySelector('img').src)
             });
             if (submitted == false) {
-                console.log('here');
                 imageMap.set("description", document.getElementById("textInput").value);
                 send(Object.fromEntries(imageMap));
                 document.getElementById('SubmitRanksButton').style.display = 'none';
