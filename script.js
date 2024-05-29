@@ -9,8 +9,9 @@ let submitted = false;
 
 eventer(messageEvent, function (e) {
     let data;
-    data = e.data;
-    console.log("Message received", data);
+    if (data.key_value) {
+        console.log("Message received", data);
+    }
 });
 
 
