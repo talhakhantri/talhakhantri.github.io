@@ -1,3 +1,27 @@
+let d;
+let eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+let eventer = window[eventMethod];
+let messageEvent = eventMethod === "attachEvent" ? "onmessage" : "message";
+let submitted = false;
+
+
+
+eventer(messageEvent, function (e) {
+    let data;
+    data = e.data;
+    console.log("Message received", data);
+});
+
+
+
+
+window.onload = function() {
+    console.log('here');
+    var height = document.body.scrollHeight;
+    window.parent.postMessage({ frameHeight: height }, '*');
+};
+
+
 document.getElementById('enterButton').addEventListener('click', function() {
 
 
@@ -114,9 +138,6 @@ document.getElementById('enterButton').addEventListener('click', function() {
 
 
 
-
-
-
     function displayImage(url) {
         const resultContainer = document.getElementById('resultContainer');
         const img = document.createElement('img');
@@ -211,36 +232,8 @@ document.getElementById('SubmitRanksButton').addEventListener('click', function(
 
 
 
-
 function send(m) {
     if (window.self !== window.top) {
         parent.postMessage(m, "*");
     }
 }
-
-
-let d;
-let eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
-let eventer = window[eventMethod];
-let messageEvent = eventMethod === "attachEvent" ? "onmessage" : "message";
-let submitted = false;
-
-
-
-eventer(messageEvent, function (e) {
-    let data;
-    data = e.data;
-    console.log("Message received", data);
-});
-
-
-
-window.onload = function() {
-    var height = document.body.scrollHeight;
-    window.parent.postMessage({ frameHeight: height }, '*');
-};
-
-
-
-
-
