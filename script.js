@@ -93,9 +93,13 @@ document.getElementById('SubmitRanksButton').addEventListener('click', function(
             });
             if (submitted == false) {
                 imageMap.set("description", document.getElementById("textInput").value);
-                send(Object.fromEntries(imageMap));
-                document.getElementById('SubmitRanksButton').style.display = 'none';
-                document.getElementById('enterButton').style.display = 'none';
+                if (document.getElementById("textInput").value != "")
+                {
+                    send(Object.fromEntries(imageMap));
+                    document.getElementById('SubmitRanksButton').style.display = 'none';
+                    document.getElementById('enterButton').style.display = 'none';
+                }
+
             }
         } else {
             alert('Please rank all the images.');
