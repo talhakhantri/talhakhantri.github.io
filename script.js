@@ -5,6 +5,7 @@ document.getElementById('enterButton').addEventListener('click', function() {
             placeholder.innerHTML = '';
     });
 
+
     const numReq = 5;
     const projectName = 'empathy_regulation';
     const userPrompt = document.getElementById('textInput').value;
@@ -12,6 +13,109 @@ document.getElementById('enterButton').addEventListener('click', function() {
     let gptPrompt = '';
     let serverURLImage = '';
     let currentPlaceholderIndex = 1;
+
+
+
+    //*****************************************
+    const key = '123';
+    const serverURLChat = `https://macresear.ch/envision-xr-server/generate_text?key=${key}&prompt_text=${encodeURIComponent(userPrompt)}`;
+
+    const enterButton = document.getElementById('enterButton');
+    let loadingInterval;
+
+    function startLoading() {
+        enterButton.disabled = true;
+        enterButton.textContent = 'Please wait...';
+        enterButton.classList.add('loading');
+    }
+
+    function stopLoading() {
+        enterButton.classList.remove('loading');
+        enterButton.textContent = 'Generate Images';
+        enterButton.disabled = false;
+    }
+
+    function fetchDataChat(url) {
+        return fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                return data.prompt_text_modified;
+            });
+    }
+
+    function fetchDataImages(url) {
+        return fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                responseURL = `https://macresear.ch/envision-xr-server/item/${data.uid}?key=${key}`;
+                return pollForStatus(responseURL);
+            });
+    }
+
+    function pollForStatus(url) {
+        const interval = 2000;
+
+        function checkStatus(resolve, reject) {
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 1) {
+                        resolve(data);
+                    } else {
+                        setTimeout(() => checkStatus(resolve, reject), interval);
+                    }
+                })
+                .catch(error => {
+                    reject(error);
+                });
+        }
+        return new Promise(checkStatus);
+    }
+
+
+
+    if (!userPrompt) {
+        alert('Please enter some text before generating images.');
+        return;
+    }
+
+    startLoading();
+
+    const fetchPromisesText = [];
+    const fetchPromisesImages = [];
+
+    for (let i = 0; i < numReq; i++) {
+        fetchPromisesText.push(
+            fetch(serverURLChat)
+                .then(response => response.json())
+                .then(data => {
+                    serverURLImage = `https://macresear.ch/envision-xr-server/generate_item?key=${key}&model=dall-e&text_prompt=${encodeURIComponent(data.prompt_text_modified)}&n=1&project=${projectName}`;
+                    fetchPromisesImages.push(
+                        fetchDataImages(serverURLImage)
+                            .then(result => {
+                                const imageUrl = result.file.slice(2, -2);
+                                displayImage(imageUrl);
+                            })
+                    );
+                })
+        );
+    }
+
+    Promise.all(fetchPromisesText)
+        .then(() => Promise.all(fetchPromisesImages))
+        .then(() => {
+            stopLoading();
+        });
+    //*****************************************
+
+
+
+
+
+
+
+
+
 
     function displayImage(url) {
         const resultContainer = document.getElementById('resultContainer');
@@ -58,6 +162,7 @@ document.getElementById('enterButton').addEventListener('click', function() {
     }
 
 
+
     const placeholders = document.querySelectorAll('.placeholder');
     placeholders.forEach(placeholder => {
         placeholder.addEventListener('dragover', dragOver);
@@ -65,11 +170,11 @@ document.getElementById('enterButton').addEventListener('click', function() {
     });
 
 
-    displayImage('https://talhakhantri.github.io/1.png')
-    displayImage('https://talhakhantri.github.io/2.png')
-    displayImage('https://talhakhantri.github.io/3.png')
-    displayImage('https://talhakhantri.github.io/4.png')
-    displayImage('https://talhakhantri.github.io/5.png')
+    // displayImage('https://talhakhantri.github.io/1.png')
+    // displayImage('https://talhakhantri.github.io/2.png')
+    // displayImage('https://talhakhantri.github.io/3.png')
+    // displayImage('https://talhakhantri.github.io/4.png')
+    // displayImage('https://talhakhantri.github.io/5.png')
 
 });
 
@@ -124,11 +229,7 @@ let submitted = false;
 
 eventer(messageEvent, function (e) {
     let data;
-    if (e.data) {
-        data = e.data
-    } else if (e.message) {
-        data = e.data
-    }
+    data = e.data;
     console.log("Message received", data);
 });
 
