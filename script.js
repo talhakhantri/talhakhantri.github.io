@@ -1,4 +1,5 @@
 let d;
+let key;
 let eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
 let eventer = window[eventMethod];
 let messageEvent = eventMethod === "attachEvent" ? "onmessage" : "message";
@@ -14,9 +15,7 @@ eventer(messageEvent, function (e) {
 
 
 
-
 window.onload = function() {
-    console.log('here');
     var height = document.body.scrollHeight;
     window.parent.postMessage({ frameHeight: height }, '*');
 };
@@ -41,7 +40,6 @@ document.getElementById('enterButton').addEventListener('click', function() {
 
 
     //*****************************************
-    const key = '123';
     const serverURLChat = `https://macresear.ch/envision-xr-server/generate_text?key=${key}&prompt_text=${encodeURIComponent(userPrompt)}`;
 
     const enterButton = document.getElementById('enterButton');
