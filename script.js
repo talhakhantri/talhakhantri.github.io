@@ -135,13 +135,5 @@ eventer(messageEvent, function (e) {
 
 
 
-window.onload = function() {
-    var height = document.body.scrollHeight;
-    window.parent.postMessage({ frameHeight: height }, '*');
-};
-
-
-
-
 
 
