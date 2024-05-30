@@ -60,6 +60,7 @@ document.getElementById('enterButton').addEventListener('click', function() {
         return fetch(url)
             .then(response => response.json())
             .then(data => {
+                console.log(data.prompt_text_modified);
                 return data.prompt_text_modified;
             });
     }
