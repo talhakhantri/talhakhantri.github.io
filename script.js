@@ -8,8 +8,8 @@ let fW;
 
 
 eventer(messageEvent, function (e) {
-    if (e.data.key) {
-        key = e.data.key;
+    if (e.data.api_key) {
+        key = e.data.api_key;
     }
 });
 
