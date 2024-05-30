@@ -4,13 +4,19 @@ let eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
 let eventer = window[eventMethod];
 let messageEvent = eventMethod === "attachEvent" ? "onmessage" : "message";
 let submitted = false;
-
+let fW;
 
 
 eventer(messageEvent, function (e) {
-    key = e.data;
+    if (e.data.key) {
+        key = e.data.key;
+    }
+    else if (e.data.frameWidth) {
+        fW = e.data.frameWidth;
+        setPlaceholderWidth();
+        window.parent.postMessage({ frameHeight: document.body.scrollHeight }, '*');
+    }
 });
-
 
 
 window.onload = function() {
@@ -27,7 +33,7 @@ document.getElementById('enterButton').addEventListener('click', function() {
     });
 
 
-    key = "B4Lp6vxGz7jNmWb5QwlsK9Tt";
+    // key = "B4Lp6vxGz7jNmWb5QwlsK9Tt";
     const numReq = 5;
     const projectName = 'empathy_regulation';
     const userPrompt = document.getElementById('textInput').value;
@@ -236,4 +242,16 @@ function send(m) {
     if (window.self !== window.top) {
         parent.postMessage(m, "*");
     }
+}
+
+
+function setPlaceholderWidth() {
+    const placeholders = document.querySelectorAll('.placeholder');
+    let w = fW * 0.90;
+    w -= fW * 0.1;
+
+    placeholders.forEach(placeholder => {
+        placeholder.style.width = `${w/5}px`;
+        placeholder.style.height = `${w/5}px`;
+    });
 }
