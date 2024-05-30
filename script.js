@@ -5,6 +5,8 @@ let eventer = window[eventMethod];
 let messageEvent = eventMethod === "attachEvent" ? "onmessage" : "message";
 let submitted = false;
 let fW;
+let imagesRetrieved = 0; // total number of images successfully retrieved
+let imagesDisplayed = 0; // control the number of images displayed
 
 
 eventer(messageEvent, function (e) {
@@ -29,7 +31,7 @@ document.getElementById('enterButton').addEventListener('click', function() {
 
 
     key = "B4Lp6vxGz7jNmWb5QwlsK9Tt";
-    const numReq = 5;
+    const numReq = 8;
     const projectName = 'empathy_regulation';
     const userPrompt = document.getElementById('textInput').value;
     let responseURL = '';
@@ -40,7 +42,7 @@ document.getElementById('enterButton').addEventListener('click', function() {
 
 
     //*****************************************
-    const serverURLChat = `https://macresear.ch/envision-xr-server/generate_text?key=${key}&text_prompt=${encodeURIComponent(userPrompt)}&modify_text_prompt=1`;
+    const serverURLChat = `https://macresear.ch/envision-xr-server/generate_text?key=${key}&prompt_text=${encodeURIComponent(userPrompt) + '.' + 'Just give one response.'}`;
 
     const enterButton = document.getElementById('enterButton');
     let loadingInterval;
@@ -60,7 +62,6 @@ document.getElementById('enterButton').addEventListener('click', function() {
         return fetch(url)
             .then(response => response.json())
             .then(data => {
-                console.log(data.prompt_text_modified);
                 return data.prompt_text_modified;
             });
     }
@@ -81,15 +82,18 @@ document.getElementById('enterButton').addEventListener('click', function() {
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
+                    // if image is generated
                     if (data.status === 1) {
+                        imagesRetrieved += 1;
                         resolve(data);
                     }
+                    // if generation still in process
                     else if (data.status === 0) {
                         setTimeout(() => checkStatus(resolve, reject), interval);
                     }
+                    // if generation failed
                     else if (data.status === -1) {
-                        console.log('image not retrieved');
-                        console.log(data);
+                        resolve(data);
                     }
                 })
                 .catch(error => {
@@ -115,12 +119,20 @@ document.getElementById('enterButton').addEventListener('click', function() {
             fetch(serverURLChat)
                 .then(response => response.json())
                 .then(data => {
-                    serverURLImage = `https://macresear.ch/envision-xr-server/generate_item?key=${key}&model=dall-e&text_prompt=${encodeURIComponent(data.prompt_text_modified)}&n=1&project=${projectName}`;
+                    serverURLImage = `https://macresear.ch/envision-xr-server/generate_item?key=${key}&model=dall-e&text_prompt=${encodeURIComponent(data.prompt_text_modified)}&modify_text_prompt=1`;
                     fetchPromisesImages.push(
                         fetchDataImages(serverURLImage)
                             .then(result => {
-                                const imageUrl = result.file.slice(2, -2);
-                                displayImage(imageUrl);
+                                if (result.status === 1) {
+                                    const imageUrl = result.file.slice(2, -2);
+                                    if (imagesDisplayed < 5) {
+                                        displayImage(imageUrl);
+                                        imagesDisplayed += 1;
+                                    }
+                                    else {
+                                        stopLoading();
+                                    }
+                                }
                             })
                     );
                 })
@@ -129,15 +141,8 @@ document.getElementById('enterButton').addEventListener('click', function() {
 
 
     Promise.all(fetchPromisesText)
-        .then(() => Promise.all(fetchPromisesImages))
-        .then(() => {
-            stopLoading();
-        });
+        .then(() => Promise.all(fetchPromisesImages));
     //*****************************************
-
-
-
-
 
 
 
@@ -194,14 +199,7 @@ document.getElementById('enterButton').addEventListener('click', function() {
     });
 
 
-    // displayImage('https://talhakhantri.github.io/1.png')
-    // displayImage('https://talhakhantri.github.io/2.png')
-    // displayImage('https://talhakhantri.github.io/3.png')
-    // displayImage('https://talhakhantri.github.io/4.png')
-    // displayImage('https://talhakhantri.github.io/5.png')
-
 });
-
 
 
 
@@ -216,7 +214,7 @@ document.getElementById('SubmitRanksButton').addEventListener('click', function(
                 countImages += 1;
             }
         });
-        if (countImages == 5) {
+        if ((imagesRetrieved >= 5 && countImages == 5) || (imagesRetrieved < 5 && countImages == imagesRetrieved)) {
             placeholders.forEach((placeholder, index) => {
                 imageMap.set(placeholder.id, placeholder.querySelector('img').src)
             });
@@ -240,15 +238,3 @@ function send(m) {
         parent.postMessage(m, "*");
     }
 }
-
-
-// function setPlaceholderWidth() {
-//     const placeholders = document.querySelectorAll('.placeholder');
-//     let w = fW * 0.90;
-//     w -= fW * 0.1;
-
-//     placeholders.forEach(placeholder => {
-//         placeholder.style.width = `${w/5}px`;
-//         placeholder.style.height = `${w/5}px`;
-//     });
-// }
