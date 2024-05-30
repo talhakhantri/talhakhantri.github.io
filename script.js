@@ -12,6 +12,7 @@ eventer(messageEvent, function (e) {
         key = e.data.key;
     }
     else if (e.data.frameWidth) {
+        console.log('parent width received');
         fW = e.data.frameWidth;
         setPlaceholderWidth();
     }
