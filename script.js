@@ -46,14 +46,13 @@ document.getElementById('enterButton').addEventListener('click', function() {
 
     function startLoading() {
         enterButton.disabled = true;
-        enterButton.textContent = 'Please wait...';
+        enterButton.innerHTML = "<strong>Please wait...</strong>";
         enterButton.classList.add('loading');
     }
 
     function stopLoading() {
         enterButton.classList.remove('loading');
-        enterButton.textContent = '**Generate Images**';
-        enterButton.disabled = false;
+        enterButton.style.display = "none";
     }
 
     function fetchDataChat(url) {
@@ -87,7 +86,7 @@ document.getElementById('enterButton').addEventListener('click', function() {
                         setTimeout(() => checkStatus(resolve, reject), interval);
                     }
                     else if (data.status === -1) {
-                        console.log('here');
+                        console.log(data);
                     }
                 })
                 .catch(error => {
