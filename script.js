@@ -11,11 +11,6 @@ eventer(messageEvent, function (e) {
     if (e.data.key) {
         key = e.data.key;
     }
-    else if (e.data.frameWidth) {
-        console.log('parent width received');
-        fW = e.data.frameWidth;
-        setPlaceholderWidth();
-    }
 });
 
 
@@ -245,13 +240,13 @@ function send(m) {
 }
 
 
-function setPlaceholderWidth() {
-    const placeholders = document.querySelectorAll('.placeholder');
-    let w = fW * 0.90;
-    w -= fW * 0.1;
+// function setPlaceholderWidth() {
+//     const placeholders = document.querySelectorAll('.placeholder');
+//     let w = fW * 0.90;
+//     w -= fW * 0.1;
 
-    placeholders.forEach(placeholder => {
-        placeholder.style.width = `${w/5}px`;
-        placeholder.style.height = `${w/5}px`;
-    });
-}
+//     placeholders.forEach(placeholder => {
+//         placeholder.style.width = `${w/5}px`;
+//         placeholder.style.height = `${w/5}px`;
+//     });
+// }
