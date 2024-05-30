@@ -3,7 +3,7 @@ body {
 }
 
 .container {
-    width: 90%;
+    width: 95%;
     margin: auto;
     padding-top: 20px;
 }
@@ -22,7 +22,7 @@ img {
 }
 
 li {
-    margin-bottom: 10px; /* Adds space below each list item */
+    margin-bottom: 10px;
 }
 
 p {
