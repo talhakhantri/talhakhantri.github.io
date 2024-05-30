@@ -52,7 +52,7 @@ document.getElementById('enterButton').addEventListener('click', function() {
 
     function stopLoading() {
         enterButton.classList.remove('loading');
-        enterButton.textContent = 'Generate Images';
+        enterButton.textContent = '**Generate Images**';
         enterButton.disabled = false;
     }
 
@@ -82,8 +82,12 @@ document.getElementById('enterButton').addEventListener('click', function() {
                 .then(data => {
                     if (data.status === 1) {
                         resolve(data);
-                    } else {
+                    }
+                    else if (data.status === 0) {
                         setTimeout(() => checkStatus(resolve, reject), interval);
+                    }
+                    else if (data.status === -1) {
+                        console.log('here');
                     }
                 })
                 .catch(error => {
@@ -120,6 +124,7 @@ document.getElementById('enterButton').addEventListener('click', function() {
                 })
         );
     }
+
 
     Promise.all(fetchPromisesText)
         .then(() => Promise.all(fetchPromisesImages))
