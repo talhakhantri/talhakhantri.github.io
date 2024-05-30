@@ -28,7 +28,7 @@ document.getElementById('enterButton').addEventListener('click', function() {
     });
 
 
-    // key = "B4Lp6vxGz7jNmWb5QwlsK9Tt";
+    key = "B4Lp6vxGz7jNmWb5QwlsK9Tt";
     const numReq = 5;
     const projectName = 'empathy_regulation';
     const userPrompt = document.getElementById('textInput').value;
@@ -40,7 +40,7 @@ document.getElementById('enterButton').addEventListener('click', function() {
 
 
     //*****************************************
-    const serverURLChat = `https://macresear.ch/envision-xr-server/generate_text?key=${key}&prompt_text=${encodeURIComponent(userPrompt)}`;
+    const serverURLChat = `https://macresear.ch/envision-xr-server/generate_text?key=${key}&text_prompt=${encodeURIComponent(userPrompt)}&modify_text_prompt=1`;
 
     const enterButton = document.getElementById('enterButton');
     let loadingInterval;
@@ -87,6 +87,7 @@ document.getElementById('enterButton').addEventListener('click', function() {
                         setTimeout(() => checkStatus(resolve, reject), interval);
                     }
                     else if (data.status === -1) {
+                        console.log('image not retrieved');
                         console.log(data);
                     }
                 })
