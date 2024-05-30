@@ -27,6 +27,7 @@ document.getElementById('enterButton').addEventListener('click', function() {
     });
 
 
+    key = "B4Lp6vxGz7jNmWb5QwlsK9Tt";
     const numReq = 5;
     const projectName = 'empathy_regulation';
     const userPrompt = document.getElementById('textInput').value;
@@ -91,7 +92,6 @@ document.getElementById('enterButton').addEventListener('click', function() {
         }
         return new Promise(checkStatus);
     }
-
 
 
     if (!userPrompt) {
