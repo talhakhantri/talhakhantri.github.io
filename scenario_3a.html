@@ -58,9 +58,7 @@
     <script>
         const placeholders = document.querySelectorAll('.placeholder');
         let frameWidth = document.body.scrollWidth;
-        placeholderWidth = (frameWidth * 0.8) / 5;
-        console.log(frameWidth);
-        console.log(placeholderWidth);
+        placeholderWidth = (frameWidth * 0.9) / 5;
         placeholders.forEach(placeholder => {
             placeholder.style.width = `${placeholderWidth}px`;
             placeholder.style.height = `${placeholderWidth}px`;
