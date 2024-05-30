@@ -14,7 +14,6 @@ eventer(messageEvent, function (e) {
     else if (e.data.frameWidth) {
         fW = e.data.frameWidth;
         setPlaceholderWidth();
-        window.parent.postMessage({ frameHeight: document.body.scrollHeight }, '*');
     }
 });
 
