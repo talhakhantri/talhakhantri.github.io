@@ -290,7 +290,7 @@ document.getElementById('SubmitRanksButton').addEventListener('click', function(
                 submitted = true;
             }
         } else {
-            alert('Please rank all the images.');
+            alert('Please rank at least five images.');
         }
     }
     checkImagesInPlaceholders();
