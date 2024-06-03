@@ -12,13 +12,13 @@ div {
     margin-left: 0%;
     margin-right: 0%;
     margin-bottom: 2%;
-    margin-top: 10px;
+    margin-top: 0.5em;
     text-align: justify;
 }
 
 
 li {
-    margin-bottom: 10px;
+    margin-bottom: 0.5em;
 }
 
 p {
@@ -53,18 +53,30 @@ video {
 
 textarea {
     width:100%;
-    height: 100px;
+    height: 5em;
     margin-bottom: 10px;
     font-size: 17px;
     border-width: 3px;
 }
 
 
+#current_img_set
+{
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    background-color: #ff9b1f;
+    text-align: center;
+    margin: auto;
+    padding: 0.5em;
+    width: 10%;
+    margin-top: 0.5em;
+}
 
 
 #enterButton, #SubmitRanksButton {
     width: 15%;
-    padding: 10px;
+    padding: 0.5em;
     background-color: #d0162e;
     color: white;
     font-size: 16px;
@@ -92,10 +104,10 @@ textarea {
     display: flex;
     justify-content: space-between;
     background-color: #ffffff;
-    margin-bottom: 5px;
-    margin-top: 5px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    margin-bottom: 0.25em;
+    margin-top: 0.25em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
 }
 
 
@@ -112,7 +124,7 @@ textarea {
 
 .placeholder {
     width: 18%;
-    height: 275px;
+    height: 150em;
     background-color: #e0e0e0;
     border: 1px dashed #ccc;
     display: flex;
@@ -162,7 +174,7 @@ textarea {
     border: none;
     color: white;
     align-self: center;
-    border-radius: 10px;
+    border-radius: 0.5em;
     font-size: 1em;
 }
 

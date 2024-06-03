@@ -312,6 +312,7 @@ document.getElementById('rightArrow').addEventListener('click', () => shiftPlace
 
 let currentStart = 0;
 const maxVisible = 5;
+let bgColors = ['#ff9b1f', '#1F83FF', '#ff1f83']
 
 function updateVisibility() {
     const placeholders = document.querySelectorAll('#resultContainer .placeholder');
@@ -329,6 +330,11 @@ function shiftPlaceholders(direction) {
         currentStart = totalPlaceholders - maxVisible;
         if (currentStart < 0) currentStart = 0;
     }
+
+
+    console.log(currentStart);
+    document.getElementById('current_img_set').innerHTML = `Image Set #${(currentStart / 5) + 1}`;
+    document.getElementById('current_img_set').style.backgroundColor = bgColors[currentStart / 5];
 
     if ((currentStart == 0 && userDescriptions[0] == '') || (currentStart == 5 && userDescriptions[1] == '') || (currentStart == 10 && userDescriptions[2] == '')) {
         document.getElementById('user_prompt').innerHTML = `The descriptions for the images generated below will appear here once generate images is clicked.`;
