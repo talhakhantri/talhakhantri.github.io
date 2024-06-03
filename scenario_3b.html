@@ -26,42 +26,54 @@
         <div class="formfield">
             <textarea id="textInput" placeholder="Enter the description of your visualization here..."></textarea>
         </div>
-        <button id="enterButton"><strong>Generate Images</strong></button>
+        <button id="enterButton"><strong>Generate Images (1/3)</strong></button>
+        <div class="dotted-border-container-description" id="user_prompt">
+            The descriptions for the images generated below will appear here once generate images is clicked.
+        </div>
         <div id="resultContainer">
+            <button id="leftArrow">&larr;</button>
             <div class="placeholder" id="placeholder1"></div>
             <div class="placeholder" id="placeholder2"></div>
             <div class="placeholder" id="placeholder3"></div>
             <div class="placeholder" id="placeholder4"></div>
             <div class="placeholder" id="placeholder5"></div>
+            <div class="placeholder" id="placeholder6"></div>
+            <div class="placeholder" id="placeholder7"></div>
+            <div class="placeholder" id="placeholder8"></div>
+            <div class="placeholder" id="placeholder9"></div>
+            <div class="placeholder" id="placeholder10"></div>
+            <div class="placeholder" id="placeholder11"></div>
+            <div class="placeholder" id="placeholder12"></div>
+            <div class="placeholder" id="placeholder13"></div>
+            <div class="placeholder" id="placeholder14"></div>
+            <div class="placeholder" id="placeholder15"></div>
+            <button id="rightArrow">&rarr;</button>
         </div>
-        <div id="textContainer">
-            <div class="invisibleplaceholder"><p style="font-size: 25px; margin: 0px;">Worst Rank</p></div>
-            <div class="invisibleplaceholder"></div>
-            <div class="invisibleplaceholder"></div>
-            <div class="invisibleplaceholder"></div>
-            <div class="invisibleplaceholder"><p style="font-size: 25px; margin: 0px;">Best Rank</p></div>
-        </div>
+        <div class="dotted-border-container">
+            Drag the generated images into the slots below to rank them.
+         </div>
         <div id="rankContainer">
+            <button id="hiddenLeftArrow"></button>
             <div class="placeholder" id="rank_1"></div>
             <div class="placeholder" id="rank_2"></div>
             <div class="placeholder" id="rank_3"></div>
             <div class="placeholder" id="rank_4"></div>
             <div class="placeholder" id="rank_5"></div>
+            <button id="hiddenRightArrow"></button>
+        </div>
+        <div id="textContainer">
+            <button id="hiddenTextLeftArrow"></button>
+            <div class="hiddenPlaceholder"><p style="font-size: 25px; margin: 0px;">Worst Rank</p></div>
+            <div class="hiddenPlaceholder"></div>
+            <div class="hiddenPlaceholder"></div>
+            <div class="hiddenPlaceholder"></div>
+            <div class="hiddenPlaceholder"><p style="font-size: 25px; margin: 0px;">Best Rank</p></div>
+            <button id="hiddenTextRightArrow"></button>
         </div>
         <button id="SubmitRanksButton"><strong>Submit Ranks</strong></button>
-        
     </div>
         </div>
     </div>
-    <script>
-        const placeholders = document.querySelectorAll('.placeholder');
-        let frameWidth = document.body.scrollWidth;
-        placeholderWidth = (frameWidth * 0.9) / 5;
-        placeholders.forEach(placeholder => {
-            placeholder.style.width = `${placeholderWidth}px`;
-            placeholder.style.height = `${placeholderWidth}px`;
-         });
-    </script>
     <script src="script.js"></script>
 </body>
 </html>
