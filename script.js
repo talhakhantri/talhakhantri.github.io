@@ -283,7 +283,7 @@ document.getElementById('SubmitRanksButton').addEventListener('click', function(
                 imageMap.set(placeholder.id, placeholder.querySelector('img').src + ' -- ' + placeholder.querySelector('img').alt);
             });
             if (submitted == false) {
-                imageMap.set('all_ranks', 'submitted');
+                imageMap.set('scenario', document.getElementById('scenario').textContent);
                 send(Object.fromEntries(imageMap));
                 document.getElementById('SubmitRanksButton').style.display = 'none';
                 document.getElementById('enterButton').style.display = 'none';
