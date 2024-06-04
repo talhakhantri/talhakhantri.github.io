@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Empathy Visualizations</title>
-</head>
+<script>
+    window.onload = function() {
+        var height = document.body.scrollHeight;
+        window.parent.postMessage({ frameHeight: height }, '*');
+    };
+</script>
 <style>
     body {
         font-family: Tahoma, sans-serif;
@@ -25,7 +24,7 @@
         align-items: center;
     }
     video {
-        height: 80vh;
+        width: 75%;
     }
     div {
         font-size: 17px;
