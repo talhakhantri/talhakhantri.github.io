@@ -3,6 +3,10 @@ body {
 }
 
 
+video {
+    width: 75%;
+}
+
 
 div {
     font-size: 17px;

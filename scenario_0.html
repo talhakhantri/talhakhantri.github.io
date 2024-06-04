@@ -4,56 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Empathy Visualizations</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<script>
-    // let eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
-    // let eventer = window[eventMethod];
-    // let messageEvent = eventMethod === "attachEvent" ? "onmessage" : "message";
-
-
-    // eventer(messageEvent, function (e) {
-    //     if (e.data.api_key) {
-    //         key = e.data.api_key;
-    //     }
-    // });
-
-    window.onload = function() {
-        var height = document.body.scrollHeight;
-        window.parent.postMessage({ frameHeight: height }, '*');
-    }
-</script>
-<style>
-    body {
-        font-family: Tahoma, sans-serif;
-    }
-    p {
-        display: block;
-        margin-bottom: 0px;
-        font-size: 20px;
-        font-weight: bold;
-        color: #d0162e;
-    }
-    .container {
-        width: 95%;
-        margin: auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    video {
-        width: 75%;
-    }
-    div {
-        font-size: 17px;
-    }
-</style>
 <body>
     <div class="container">
-        <p style="font-size: 30px;">Now let us learn how to use the tool</p>
-        <div>Click on the play button to watch the tutorial.</div><br>
+        <p id="scenario">Now let us learn how to use the tool!</p>
         <video id="demo_vid" controls="controls" src="https://talhakhantri.github.io/tutorial/demo.mp4" type="video/mp4"></video>
-        <img src="https://talhakhantri.github.io/tutorial/test.png">
     </div>
+    <script src="scriptVideo.js"></script>
 </body>
 </html>
