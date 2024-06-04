@@ -5,20 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Empathy Visualizations</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        video {
+            max-height: 80vh;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <p style="font-size: 30px;">Now let us learn how to use the tool.</p>
-
-        <div>Click on the play button to watch the tutorial.<div>
-        <video height="auto" controls="controls" preload="none" onclick="this.play()">
-            <source type="video/mp4" src="https://talhakhantri.github.io/tutorial/demo.mp4">
-        </video>
-    </div>
-        </div>
+        <div>Click on the play button to watch the tutorial.</div><br>
+        <video id="demo_vid" controls="controls" src="https://talhakhantri.github.io/tutorial/demo.mp4" type="video/mp4"></video>
     </div>
 </body>
-<script>
-    $('.video').click(function(){this.paused?this.play():this.pause();});
-</script>
 </html>
