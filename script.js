@@ -331,8 +331,6 @@ function shiftPlaceholders(direction) {
         if (currentStart < 0) currentStart = 0;
     }
 
-
-    console.log(currentStart);
     document.getElementById('current_img_set').innerHTML = `Image Set #${(currentStart / 5) + 1}`;
     document.getElementById('current_img_set').style.backgroundColor = bgColors[currentStart / 5];
 
@@ -345,3 +343,14 @@ function shiftPlaceholders(direction) {
 }
 
 updateVisibility();
+
+
+
+
+let placeholders = document.querySelectorAll('.placeholder img');
+placeholders.forEach(placeholder => {
+    placeholder.addEventListener('mouseover', () => {
+    });
+    placeholder.addEventListener('mouseout', () => {
+    });
+});
