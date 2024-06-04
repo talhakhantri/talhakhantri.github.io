@@ -5,11 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Empathy Visualizations</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        video {
-            max-height: 80vh;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
@@ -18,4 +13,8 @@
         <video id="demo_vid" controls="controls" src="https://talhakhantri.github.io/tutorial/demo.mp4" type="video/mp4"></video>
     </div>
 </body>
+<script>
+    var height = document.body.scrollHeight;
+    window.parent.postMessage({ frameHeight: height }, '*');
+</script>
 </html>
