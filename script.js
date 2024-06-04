@@ -278,7 +278,7 @@ document.getElementById('SubmitRanksButton').addEventListener('click', function(
                 imagesRanked += 1;
             }
         });
-        if ((imagesRetrieved >= 5 && imagesRanked == 5) || (imagesRetrieved < 5 && imagesRanked == imagesRetrieved)) {
+        if ((imagesRetrieved >= 5 && imagesRanked == 5) || (imagesRetrieved < 5 && imagesRanked == imagesRetrieved && imagesRetrieved != 0)) {
             placeholders.forEach((placeholder, index) => {
                 imageMap.set(placeholder.id, placeholder.querySelector('img').src + ' -- ' + placeholder.querySelector('img').alt);
             });
