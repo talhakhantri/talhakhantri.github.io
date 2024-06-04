@@ -13,6 +13,7 @@
 
     window.onload = function() {
         var height = document.body.scrollHeight + 1000;
+        console.log('height');
         window.parent.postMessage({ frameHeight: height }, '*');
     }
 </script>
