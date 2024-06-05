@@ -152,7 +152,7 @@ document.getElementById('enterButton').addEventListener('click', function() {
 
 
     if (!userPrompt) {
-        alert('Please enter some text before generating images.');
+        showModal('Please enter some text before generating images.');
         return;
     }
 
@@ -290,7 +290,7 @@ document.getElementById('SubmitRanksButton').addEventListener('click', function(
                 submitted = true;
             }
         } else {
-            alert('Please rank at least five images.');
+            showModal('Please rank at least five images.');
         }
     }
     checkImagesInPlaceholders();
@@ -354,3 +354,24 @@ placeholders.forEach(placeholder => {
     placeholder.addEventListener('mouseout', () => {
     });
 });
+
+
+
+function showModal(message) {
+  var modal = document.getElementById("myModal");
+  var modalMessage = document.getElementById("modalMessage");
+  var span = document.getElementsByClassName("close")[0];
+
+  modalMessage.textContent = message;
+  modal.style.display = "block";
+
+  span.onclick = function () {
+    modal.style.display = "none";
+  };
+
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+}
